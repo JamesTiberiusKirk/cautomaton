@@ -1,9 +1,9 @@
-all:
+all: cautomaton
 
-
-SRC=asd
-OBJ=asd
-
+cautomaton:
+	gcc -Wall -Werror -o $@ main.c
 
 clean:
-    rm -rf $(SRC)/*.o *.o $(SRC)*.gch *.gch $(OBJ)
+	rm -rf cautomaton
+
+
