@@ -1,25 +1,22 @@
 #include<stdio.h>
 #include<string.h>
-#include <wchar.h>
 
 int rule30[] = {0,0,0,1,1,1,1,0};
-int prevGen[] = {0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-int genLength = 25;
+int prevGen[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int genLength = 32;
 
 int printGen(int gen[genLength]){
-    wchar_t *bb = L"\u25A0";
-    wchar_t *ww = L"\u25A1";
     for(int i=0;i<genLength;i++){
         //printf(" %d ",gen[i]);
         if(gen[i]==1){
-            //printf("|#");
-            wprintf(L"%c",bb);
+            printf("\u25A0");
+            printf("\u25A0");
         }else{
-            //printf("| ");
-            wprintf(L"%c",ww);
+            printf("\u25A1"); 
+            printf("\u25A1"); 
         }
     }
-    printf("\n");
+    printf("|\n");
     return 0;
 }
 
