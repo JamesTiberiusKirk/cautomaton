@@ -54,7 +54,7 @@ int calculateNextGen(){
         
     }
     //prevGen=nextGen;
-    memcpy(prevGen,nextGen, genLength * sizeof(int));
+    memcpy(prevGen, nextGen, genLength * sizeof(int));
     return 0;
 }
 
