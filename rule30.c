@@ -12,8 +12,8 @@ int printGen(int gen[genLength]){
             printf("\u25A0");
             printf("\u25A0");
         }else{
-            printf("\u25A1"); 
-            printf("\u25A1"); 
+            //printf("\u25A1"); 
+            printf("  "); 
         }
     }
     printf("|\n");
