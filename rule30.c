@@ -1,9 +1,35 @@
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
 
 int rule30[] = {0,0,0,1,1,1,1,0};
 int prevGen[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 int genLength = 32;
+
+
+int printToFile(int gen[genLength],char *fname){ 
+    FILE *f=fopen(fname,"a");
+  
+    if(f == NULL){
+        printf("Error opening file\n");
+        exit(1);
+    }
+    
+    for(int i=0;i<genLength;i++){
+        //printf(" %d ",gen[i]);
+        if(gen[i]==1){
+            fprintf(f,"\u25A0");
+            fprintf(f,"\u25A0");
+        }else{
+            //printf("\u25A1");
+            fprintf(f,"  "); 
+        }
+    }
+    fprintf(f,"|\n");
+    
+    fclose(f);
+    return 0;
+}
 
 int printGen(int gen[genLength]){
     for(int i=0;i<genLength;i++){
@@ -12,7 +38,7 @@ int printGen(int gen[genLength]){
             printf("\u25A0");
             printf("\u25A0");
         }else{
-            //printf("\u25A1"); 
+            //printf("\u25A1");
             printf("  "); 
         }
     }
@@ -60,6 +86,7 @@ int calculateNextGen(){
 
 int main(){
     for(int i=0;i<250;i++){
+        printToFile(prevGen,"rule30.txt");
         printGen(prevGen);
         calculateNextGen();
     }
