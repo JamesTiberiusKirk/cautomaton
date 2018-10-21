@@ -1,15 +1,16 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+
 int decToBin(int dec){
     if (dec == 0){
         return 0;
     }else{
-        return (dec % 2 + 10 * decToBin(dec / 2));
+        return (dec % 2 + 10 * convert(dec / 2));
     }
 }
 
-int binToString(int dec, int l, char *binString){
+int binToString(int dec, char *binString){
     int binInt = decToBin(dec);
     char *tmpBin[256];
     itoa(binInt,tmpBin,10);
