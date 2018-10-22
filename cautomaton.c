@@ -27,7 +27,7 @@ int printToFile(int *gen,char *fname){
 }
 
 int printGen(int *gen){
-    size_t genLength=sizeof(prevGen)/sizeof(int);
+    size_t genLength=sizeof(gen)/sizeof(int);
     for(int i=0;i<genLength;i++){
         if(gen[i]==1){
             printf("\u25A0");
@@ -52,7 +52,7 @@ int compareRule(int a, int b, int c, int rule[7]){
     return -1;
 }
 
-int calculateNextGen(int *prevGen){
+int calculateNextGen(int *prevGen, int rule[7]){
     size_t genLength=sizeof(prevGen)/sizeof(int);
 
     int nextGen[genLength];
@@ -72,14 +72,49 @@ int calculateNextGen(int *prevGen){
             b=prevGen[i];
             c=prevGen[i+1];
         }
-        nextGen[i]=compareRule(a,b,c);
+        nextGen[i]=compareRule(a,b,c,rule);
         
     }
     memcpy(prevGen, nextGen, genLength * sizeof(int));
     return 0;
 }
 
-int decTOBin(int dec, int *rule){
+int dectobin(int dec){
+    if (dec == 0){
+        return 0;
+    }else{
+        return (dec % 2 + 10 * dectobin(dec / 2));
+    }
+}
+
+int decTOBinArr(int dec, int *rule){
+    if (dec>255){
+        return 1;
+    }
+        
+    int bin=dectobin(dec);
+    if(bin<1000000){
+        //means int will be shorter
+    }
+    
+    rule[6] = dec%10;
+    rule[5] = (dec/10)%10;
+    rule[4] = (dec/100)%10;
+    rule[3] = (dec/1000)%10;
+    rule[2] = (dec/10000)%10;
+    rule[1] = (dec/100000)%10;
+    rule[0] = (dec/1000000)%10;
+
+    for(int i=6;i>=0;i--){
+        
+    }
 
 
-}    
+
+
+
+
+
+    return 0;
+}
+

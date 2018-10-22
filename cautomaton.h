@@ -7,5 +7,5 @@
 int printToFile(int *gen,char *fname);
 int printGen(int *gen);
 int compareRule(int a, int b, int c, int rule[7]);
-int calculateNextGen(int *prevGen);
-int decTOBin(int dec, int *rule);
+int calculateNextGen(int *prevGen, int rule[7]);
+int dectobin(int dec, int *rule);
