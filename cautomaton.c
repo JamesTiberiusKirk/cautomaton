@@ -79,3 +79,7 @@ int calculateNextGen(int *prevGen){
     return 0;
 }
 
+int decTOBin(int dec, int *rule){
+
+
+}    
