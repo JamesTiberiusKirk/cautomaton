@@ -87,15 +87,15 @@ int dectobin(int dec){
     }
 }
 
-int decTOBinArr(int dec, int *rule){
+int decTOBinArr(int dec, int *rule[7]){
     if (dec>255){
         return 1;
     }
         
     int bin=dectobin(dec);
     
-    size_t genLength=sizeof(rule)/sizeof(int);
-   
+    size_t genLength= sizeof(rule)/sizeof(int);
+    printf("the size is %ld\n",genLength); 
     int tmpRule[7]; 
     tmpRule[6] = bin%10;
     tmpRule[5] = (bin/10)%10;
@@ -105,17 +105,12 @@ int decTOBinArr(int dec, int *rule){
     tmpRule[1] = (bin/100000)%10;
     tmpRule[0] = (bin/1000000)%10;
     
-        
-    memcpy(rule,tmpRule, genLength * sizeof(int));
+    
+    memcpy(rule,tmpRule, genLength*sizeof(int));
 
     /*for(int i=6;i>=0;i--){
         
     }*/
-
-
-
-
-
 
 
     return 0;
