@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include"./cautomaton.h"
+#include"cautomaton.h"
 
 int printToFile(int *gen,char *fname){ 
     FILE *f=fopen(fname,"a");
@@ -93,21 +93,24 @@ int decTOBinArr(int dec, int *rule){
     }
         
     int bin=dectobin(dec);
-    if(bin<1000000){
-        //means int will be shorter
-    }
     
-    rule[6] = dec%10;
-    rule[5] = (dec/10)%10;
-    rule[4] = (dec/100)%10;
-    rule[3] = (dec/1000)%10;
-    rule[2] = (dec/10000)%10;
-    rule[1] = (dec/100000)%10;
-    rule[0] = (dec/1000000)%10;
-
-    for(int i=6;i>=0;i--){
+    size_t genLength=sizeof(rule)/sizeof(int);
+   
+    int tmpRule[7]; 
+    tmpRule[6] = bin%10;
+    tmpRule[5] = (bin/10)%10;
+    tmpRule[4] = (bin/100)%10;
+    tmpRule[3] = (bin/1000)%10;
+    tmpRule[2] = (bin/10000)%10;
+    tmpRule[1] = (bin/100000)%10;
+    tmpRule[0] = (bin/1000000)%10;
+    
         
-    }
+    memcpy(rule,tmpRule, genLength * sizeof(int));
+
+    /*for(int i=6;i>=0;i--){
+        
+    }*/
 
 
 
