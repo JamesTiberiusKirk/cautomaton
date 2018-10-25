@@ -3,6 +3,29 @@
 #include<stdlib.h>
 #include"cautomaton.h"
 
+
+int initRuleNGen(int **rule, int **gen, int genLength){
+    if (rule == NULL)
+        return 1; 
+    if (gen == NULL)
+        return 1;
+
+    if (*rule != NULL)
+        return 1;
+    if (*gen != NULL)
+        return 1;
+
+    (*rule) = (int *)malloc(8*sizeof(int));
+    (*gen) = (int *)malloc(genLength*sizeof(int));
+    
+    if ((*rule) == NULL)
+        return -1;
+    if ((*gen) == NULL)
+        return -1;
+
+    return 0;
+}
+
 int printToFile(int *gen,char *fname){ 
     FILE *f=fopen(fname,"a");
   
@@ -87,31 +110,16 @@ int dectobin(int dec){
     }
 }
 
-int decTOBinArr(int dec, int *rule[7]){
+int decTOBinArr(int dec, int *rule){
     if (dec>255){
         return 1;
     }
-        
     int bin=dectobin(dec);
-    
-    size_t genLength= sizeof(rule)/sizeof(int);
-    printf("the size is %ld\n",genLength); 
-    int tmpRule[7]; 
-    tmpRule[6] = bin%10;
-    tmpRule[5] = (bin/10)%10;
-    tmpRule[4] = (bin/100)%10;
-    tmpRule[3] = (bin/1000)%10;
-    tmpRule[2] = (bin/10000)%10;
-    tmpRule[1] = (bin/100000)%10;
-    tmpRule[0] = (bin/1000000)%10;
-    
-    
-    memcpy(rule,tmpRule, genLength*sizeof(int));
-
-    /*for(int i=6;i>=0;i--){
-        
-    }*/
-
+    int div=1;
+    for(int i=7;i>=0;i--){
+        rule[i] = (bin/div)%10;
+        div*=10;
+    }
 
     return 0;
 }

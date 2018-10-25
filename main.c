@@ -6,16 +6,20 @@ int main(int argc, char *argv[]){
     int bin = dectobin(30);    
     printf("%d\n", bin);
     
-    int rule[7]={0,0,0,0,0,0,0} ;
-    
+    int *rule;
+    //int *gen;
+
+    //initRuleNGen(&rule,
+    //rule = (int*)malloc(sizeof(int)*8);
+
     size_t genLength= sizeof(rule)/sizeof(int);
     printf("the size is %ld\n",genLength); 
 
     
-    decTOBinArr(30,&rule);
-    for(int i=0;i<7;i++){
-        printf("%d",rule[i]);
+    decTOBinArr(30,rule);
+    for(int i=0;i<8;i++){
+        printf(" %d ",rule[i]);
     }
-
+    printf("\n");
     return 0;
 }
