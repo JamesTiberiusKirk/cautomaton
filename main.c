@@ -9,8 +9,9 @@ int main(int argc, char *argv[]){
     int *rule;
     int *gen;
 
-    initRuleNGen(&rule,&gen,32);
-    //gen[16]=1;
+    int rtn = initRuleNGen(&rule, &gen, 32);
+    printf("%d\n",rtn);
+    //*(gen+16)=1;
     //rule = (int*)malloc(sizeof(int)*8);
 
     size_t genLength= sizeof(rule)/sizeof(int);

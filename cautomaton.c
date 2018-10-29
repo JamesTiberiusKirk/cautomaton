@@ -10,20 +10,18 @@ int initRuleNGen(int **rule, int **gen, int genLength){
     if (gen == NULL)
         return 1;
 
-    if (*rule != NULL)
-        return 1;
-    if (*gen != NULL)
-        return 1;
-
     (*rule) = (int *)malloc(8*sizeof(int));
     (*gen) = (int *)malloc(genLength*sizeof(int));
-    for(int i=0; i<genLength;i++){
-        *gen[i]=0;
-    } 
+ 
     if ((*rule) == NULL)
         return -1;
     if ((*gen) == NULL)
         return -1;
+
+    for(int i=0; i<genLength;i++){
+        *(gen+i)=0;
+    } 
+ 
 
     return 0;
 }
