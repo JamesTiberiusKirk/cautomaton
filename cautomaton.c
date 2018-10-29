@@ -17,7 +17,9 @@ int initRuleNGen(int **rule, int **gen, int genLength){
 
     (*rule) = (int *)malloc(8*sizeof(int));
     (*gen) = (int *)malloc(genLength*sizeof(int));
-    
+    for(int i=0; i<genLength;i++){
+        *gen[i]=0;
+    } 
     if ((*rule) == NULL)
         return -1;
     if ((*gen) == NULL)
@@ -110,16 +112,26 @@ int dectobin(int dec){
     }
 }
 
-int decTOBinArr(int dec, int *rule){
-    if (dec>255){
+int decTOBinArr(int dec, int* rule){
+    if (dec>255)
         return 1;
-    }
+    
+    if (rule == NULL)
+        return 1;
+
+
     int bin=dectobin(dec);
+    
+    int *tmprule = (int *)malloc(8*sizeof(int));
+
     int div=1;
     for(int i=7;i>=0;i--){
-        rule[i] = (bin/div)%10;
+        tmprule[i] = (bin/div)%10;
         div*=10;
     }
+    
+
+    memcpy(rule,tmprule,8*sizeof(int));
 
     return 0;
 }
