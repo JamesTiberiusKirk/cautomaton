@@ -21,8 +21,8 @@ int main(int argc, char *argv[]){
     int dec;
     int nrOfGens=30; //default val
     
+    srand(time(NULL));
     if (argc==1){ 
-        srand(time(NULL));
         dec = (rand()%255)+1;
     } else if (argc==2) {
         if (strcmp(argv[1], "help") == 0 ){
@@ -31,10 +31,18 @@ int main(int argc, char *argv[]){
         }
         dec = strtol(argv[1], &p, 10); 
    } else if (argc==3) {
-        dec = strtol(argv[1], &p, 10); 
+        if (strcmp(argv[1], "rand") == 0 ){
+            dec = (rand()%255)+1;
+        } else {
+            dec = strtol(argv[1], &p, 10); 
+        }
         nrOfGens = strtol(argv[2], &p, 10);
    } else if (argc==4) {
-        dec = strtol(argv[1], &p, 10); 
+        if (strcmp(argv[1], "rand") == 0 ){
+            dec = (rand()%255)+1;
+        } else {
+            dec = strtol(argv[1], &p, 10); 
+        }
         nrOfGens = strtol(argv[2], &p, 10);
         genLength = strtol(argv[3], &p, 10);
    } else if (argc>4) {
@@ -66,6 +74,15 @@ int main(int argc, char *argv[]){
 void help(){
     printf("Usage:\n");
     printf("\t./cautomatonv2 <rule> <number of generations> <length of generations>\n");
+    printf("\n<rule> needs to be a decial number between 0 and 255\n\t to chose a random number, pass in \"rand\" instead of the decial number.\n");
+    printf("<number of generations> needs to be a positive decimal number\n");
+    printf("<length of generation> needs to be a positive decimal for determening the \n\tlength of each individual generation\n");
+    printf("\nAlternative usage:\n");
+    printf("\t./cautomatonv2 <rule> <number of generations>\n");
+    printf("\t./cautomatonv2 <rule>\n");
+    printf("\t./cautomatonv2\n");
+    printf("Not supplying the arguments like above will just set them to a default value.\n");
+    printf("Not supplying a rule will automatically generate one.\n");
 }
 
 int printToFile(int gen[genLength],char *fname){ 
