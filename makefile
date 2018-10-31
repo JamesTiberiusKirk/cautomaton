@@ -12,7 +12,11 @@ cautomaton.o:
 rule30:
 	$(CC) $(CFLAGS) -o $@ rule30.c
 
+cautomatonv2:
+	$(CC) $(CFLAGS) -o $@ cautomatonv2.c
+
+
 clean:
-	rm -rf cautomaton *.o rule30 *.gch 
+	rm -rf cautomaton cautomatonv2 *.o rule30 *.gch 
 
 
