@@ -21,23 +21,24 @@ int main(int argc, char *argv[]){
     int dec;
     int nrOfGens=30; //default val
     
+    //parcing command arguemnt    
     srand(time(NULL));
-    if (argc==1){ 
+    if (argc==1){ //if no args
         dec = (rand()%256)+1;
-    } else if (argc==2) {
+    } else if (argc==2) { //if 1 arg
         if (strcmp(argv[1], "help") == 0 ){
             help();
             exit(0);
         }
         dec = strtol(argv[1], &p, 10); 
-    } else if (argc==3) {
+    } else if (argc==3) { //if 2 args
         if (strcmp(argv[1], "rand") == 0 ){
             dec = (rand()%255)+1;
         } else { 
             dec = strtol(argv[1], &p, 10); 
         }
         nrOfGens = strtol(argv[2], &p, 10);
-    } else if (argc==4) {
+    } else if (argc==4) { //if 3 args
         if (strcmp(argv[1], "rand") == 0 ){
             dec = (rand()%255)+1;
         } else {
@@ -45,15 +46,15 @@ int main(int argc, char *argv[]){
         }
         nrOfGens = strtol(argv[2], &p, 10);
         genLength = strtol(argv[3], &p, 10);
-    } else if (argc>4) {
+    } else if (argc>4) { //if more than 3 args
         printf("Too many params\n");
         help();
         exit(1);
     }
-
+    
+    //argument validation
     for(int i=1; i<argc; i++){
         strtol(argv[i], &p, 10);
-        printf("entered the loop %s\n",p);
         if (strcmp(argv[i], "rand") == 0 || strcmp(argv[i], "help") == 0 ){
             //i++;
             printf("arg is ok %s\n",argv[i]);
@@ -64,6 +65,7 @@ int main(int argc, char *argv[]){
         }
     }
     
+    //init array and populate it
     prevGen = (int *)malloc(genLength*sizeof(int));
     for(int i=0;i<genLength;i++){
         prevGen[i]=0;
@@ -73,7 +75,8 @@ int main(int argc, char *argv[]){
     printf("The rule is: %d\n",dec);         
     printf("The number of generations: %d\n",nrOfGens);
     printf("The length of each generation: %d\n",genLength);
- 
+    
+    //calculating next generation
     decTOBinArr(dec);   
     for(int i=0;i<nrOfGens;i++){
         printToFile(prevGen,"rule.txt");
@@ -83,7 +86,7 @@ int main(int argc, char *argv[]){
     return 0;
 }
 
-
+//a quick help funtion
 void help(){
     printf("Usage:\n");
     printf("\t./cautomatonv2 <rule> <number of generations> <length of generations>\n");
@@ -98,6 +101,7 @@ void help(){
     printf("Not supplying a rule will automatically generate one.\n");
 }
 
+//to print generations to file
 int printToFile(int gen[genLength],char *fname){ 
     FILE *f=fopen(fname,"a");
   
@@ -122,6 +126,7 @@ int printToFile(int gen[genLength],char *fname){
     return 0;
 }
 
+//print generations in terminal
 int printGen(int gen[genLength]){
     for(int i=0;i<genLength;i++){
         //printf(" %d ",gen[i]);
@@ -137,6 +142,7 @@ int printGen(int gen[genLength]){
     return 0;
 }
 
+//for comparison of the rule
 int compareRule(int a, int b, int c){
     if(a==1 && b==1 && c==1){return rule[0];}
     if(a==1 && b==1 && c==0){return rule[1];}
@@ -149,12 +155,13 @@ int compareRule(int a, int b, int c){
     return -1;
 }
 
+//calculating of next generation
 int calculateNextGen(){
     int nextGen[genLength];
     int a,b,c;
     
     for(int i=0;i<genLength;i++){
-        if(i==0){
+        if(i==0){ //edge cases
             a=prevGen[genLength-1];
             b=prevGen[i];
             c=prevGen[i+1];
@@ -170,12 +177,12 @@ int calculateNextGen(){
         nextGen[i]=compareRule(a,b,c);
         
     }
-    //prevGen=nextGen;
+    //copying next gen to prev gen
     memcpy(prevGen, nextGen, genLength * sizeof(int));
     return 0;
 }
 
-
+//converting int decimal to int binary
 int dectobin(int dec){
     if (dec == 0){
         return 0;
@@ -184,6 +191,7 @@ int dectobin(int dec){
     }
 }
 
+//converting int binary to int array
 int decTOBinArr(int dec){
     if (dec>255)
         return 1;

@@ -4,17 +4,19 @@
 #include<time.h>
 
 int rule[8];
-int prevGen[32][32];
 int genLength = 20;
-
+int prevGen[20][20];
 
 int printGen(int gen[genLength][genLength]);
+int printToFile(int gen[genLength][genLength], char *fname);
+int countNeighbours(int i, int j);
+
 
 int main(int argc, char *argv[]){
     srand(time(NULL));
     for (int i=0; i<genLength; i++){
         for (int j=0; j<genLength; j++){
-            prevGen[i][j]=rand()%1;
+            prevGen[i][j]=(rand()%2);
         }
     }
     
@@ -23,6 +25,7 @@ int main(int argc, char *argv[]){
     return 0;
 }
 
+//pringitng to a file
 int printToFile(int gen[genLength][genLength],char *fname){ 
     FILE *f=fopen(fname,"a");
   
@@ -35,7 +38,7 @@ int printToFile(int gen[genLength][genLength],char *fname){
         printf("Generation %d\n",i);
         for(int j=0;j<genLength;j++){
             //printf(" %d ",gen[i]);
-            if(gen[i]==1){
+            if(gen[i][j]==1){
                 fprintf(f,"\u25A0");
                 fprintf(f,"\u25A0");
             }else{
@@ -50,11 +53,13 @@ int printToFile(int gen[genLength][genLength],char *fname){
     return 0;
 }
 
+//printing in termilal
 int printGen(int gen[genLength][genLength]){
+    //clreaing screen
     printf("\033c" );
 
-    for(int i=0;i<32;i++){
-        printf("Generation %d\n",i); 
+    for(int i=0;i<genLength;i++){
+        printf("\n");
         for (int j=0; j<genLength;j++){
             //printf(" %d ",gen[i][j]);
             if(gen[i][j]==1){
@@ -70,6 +75,7 @@ int printGen(int gen[genLength][genLength]){
     return 0;
 }
 
+//for deterening current cell
 int compareRule(){
     /*
      * possible combos
@@ -89,27 +95,44 @@ int compareRule(){
     1101
     1110
     1111
-    */
-
-    
+    */ 
 
 
-
+    return 0;
 }
 
+//generating next generation
 int nextGen(){
-    int nextGen[genLength][genLength];
-    //int tr,t,tl,mr,ml,lr,l,ll;
+    //int nextGen[genLength][genLength];
     
+    int neighborCount;
     for(int i=0;i<genLength;i++){
         for(int j=0;j<genLength;j++){
-            if (i==0){
-
+            if (i==0 || i== genLength-1 || j==0 || j== genLength-1){
+               //edge case 
             }
+            neighborCount = countNeighbours(i,j);
         }
     }
     return 0;
 }
+
+//For counting the neighbours of a cell
+int countNeighbours(int i, int j){
+    int sum=0;
+    //Yes I know,there is a better way todo this, only just written it 1hour before the deadline :))
+    sum += prevGen[i-1][j-1];
+    sum += prevGen[i][j-1];
+    sum += prevGen[i+1][j-1];
+    sum += prevGen[i-1][j];
+    sum += prevGen[i+1][j+1];
+    sum += prevGen[i][j+1];
+    sum += prevGen[i-1][j+1];
+    sum += prevGen[i-1][j];
+    return sum;
+}
+
+
 
 
 
