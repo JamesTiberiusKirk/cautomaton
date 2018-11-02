@@ -1,0 +1,22 @@
+When we received the cellular automaton assignment, we started with a discussion on what a cellular automaton was,
+what we needed to code the basics and what extras we could do by looking at the checklist given to us on Blackboard.
+We divided the workload among us according to skill level and time availability. Due to working on the last assignment,
+we had more experience which made it easier to decide which of us was better or worse at coding specific things for code.
+We decided on working with gcc for the assignment as this is the standard compiler for Unix based development.
+
+The team was quite good at working together, we didn’t meet in labs too many times and focused on individual work with
+online sharing and online communication. Using online concurrent versioning systems we checked each other’s code when 
+we met errors and checked for proper coding structure. Due to the nature of online communication instead of in person 
+there were a couple of times where miscommunication happened which were preventable with in person explanations. Another 
+issue with online communication we met was time management, because we made little in person meetings we didn’t feel a 
+need to have certain code bits completed before meetings.
+
+(Problem)
+When making the 1D version of the automaton we tried making a library file for all the automation functions, but while 
+doing this we started running into memory management issues such as segmentation and pointer problems.
+
+(Solution)
+To solve our library problem we decided it was best to put only one c file per solution so we wouldn’t need to implement 
+a library.
+
+-Ran through 2 spell checks and 1 word count
