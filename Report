@@ -11,6 +11,19 @@ there were a couple of times where miscommunication happened which were preventa
 issue with online communication we met was time management, because we made little in person meetings we didn’t feel a 
 need to have certain code bits completed before meetings.
 
+When we were almost finshed with the 1D autmaton we realised that we haven't yet made an error handling system for the 
+inputs. The basic things that we have implemented were justparing the arguments, making sure that they arent non-numerical 
+strings. The one small problem with that was that I was using the keywork "rand" and "help" to specify different 
+functions in the program. This was just a matter of adding a pseudo wite list of words.
+
+Programmatically we didnt have many challanges, one of our main challanges was to figure out the interface and how that 
+was going to tie into th all of the functions that we have written. For example, how were we gonna let the user choose
+their own first generation (we did not do that in the end).
+
+The main reasons why we went with the argument based interface was because it was simply easier to manage. Adding a menu 
+would bulk up the program and it would not follow common unix programm comvintions.
+
+
 (Problem)
 1.When making the 1D version of the automaton we tried making a library file for all the automation functions, but while 
 doing this we started running into memory management issues such as segmentation and pointer problems.
