@@ -30,14 +30,14 @@ int main(int argc, char *argv[]){
             exit(0);
         }
         dec = strtol(argv[1], &p, 10); 
-   } else if (argc==3) {
+    } else if (argc==3) {
         if (strcmp(argv[1], "rand") == 0 ){
             dec = (rand()%255)+1;
-        } else {
+        } else { 
             dec = strtol(argv[1], &p, 10); 
         }
         nrOfGens = strtol(argv[2], &p, 10);
-   } else if (argc==4) {
+    } else if (argc==4) {
         if (strcmp(argv[1], "rand") == 0 ){
             dec = (rand()%255)+1;
         } else {
@@ -45,12 +45,24 @@ int main(int argc, char *argv[]){
         }
         nrOfGens = strtol(argv[2], &p, 10);
         genLength = strtol(argv[3], &p, 10);
-   } else if (argc>4) {
+    } else if (argc>4) {
         printf("Too many params\n");
         help();
         exit(1);
-   }
-   
+    }
+
+    for(int i=1; i<argc; i++){
+        strtol(argv[i], &p, 10);
+        printf("entered the loop %s\n",p);
+        if (strcmp(argv[i], "rand") == 0 || strcmp(argv[i], "help") == 0 ){
+            //i++;
+            printf("arg is ok %s\n",argv[i]);
+        } else if (p == argv[i] || *p != '\0'){
+            printf("arg is not ok %s\n", argv[i]);
+            printf("Please enter valid integers\n");
+            exit(1);
+        }
+    }
     prevGen = (int *)malloc(genLength*sizeof(int));
     for(int i=0;i<genLength;i++){
         prevGen[i]=0;

@@ -13,8 +13,8 @@
 - [x] Let the user set itsown length for gens
 - [x] Let user set length for number of gens
 - [] ??? Allow the user to select or create the first gen 
-- [] Make input validation
-- [] Think about letting the user input a string of binary numbers
+- [X] Make input validation
+- [] (MAYBE) Think about letting the user input a string of binary numbers
 ###2D automaton (Ren's notes)
 - [] Conys game
 - [] Different 2d automaton
