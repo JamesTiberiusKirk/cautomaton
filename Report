@@ -12,11 +12,15 @@ issue with online communication we met was time management, because we made litt
 need to have certain code bits completed before meetings.
 
 (Problem)
-When making the 1D version of the automaton we tried making a library file for all the automation functions, but while 
+1.When making the 1D version of the automaton we tried making a library file for all the automation functions, but while 
 doing this we started running into memory management issues such as segmentation and pointer problems.
 
+2.When creating the 2D automaton, the main issue we encountered was that all of us were busy with other assignments and duties.
+We simply did not have the time to actually sit down and think the 2D one through, altho we have started to work on it and we 
+had a pretty good idea of what we wanted to do.
+
 (Solution)
-To solve our library problem we decided it was best to put only one c file per solution so we wouldn’t need to implement 
+1.To solve our library problem we decided it was best to put only one c file per solution so we wouldn’t need to implement 
 a library.
 
 -Ran through 2 spell checks and 1 word count
