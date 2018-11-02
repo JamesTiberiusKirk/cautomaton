@@ -63,6 +63,7 @@ int main(int argc, char *argv[]){
             exit(1);
         }
     }
+    
     prevGen = (int *)malloc(genLength*sizeof(int));
     for(int i=0;i<genLength;i++){
         prevGen[i]=0;

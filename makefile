@@ -1,13 +1,10 @@
-all: cautomaton
+all: 2dcautomaton rule30 cautomatonv2
 
 CC=gcc
 CFLAGS= -Wall -Werror -g
 
-cautomaton: cautomaton.o
-	$(CC) $(CFLAGS) -o $@ main.c cautomaton.o
-
-cautomaton.o:
-	$(CC) $(CFLAGS) -c cautomaton.c cautomaton.h 
+2dcautomaton: 
+	$(CC) $(CFLAGS) -o $@ 2dcautomaton.c
 
 rule30:
 	$(CC) $(CFLAGS) -o $@ rule30.c
@@ -17,6 +14,6 @@ cautomatonv2:
 
 
 clean:
-	rm -rf cautomaton cautomatonv2 *.o rule30 *.gch 
+	rm -rf 2dcautomaton cautomatonv2 *.o rule30 *.gch 
 
 
