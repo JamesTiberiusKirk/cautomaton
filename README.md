@@ -1,25 +1,4 @@
-# cautomaton
-
-## TODO:  
-- [] Create a sysem for the automaton itself
-- [] Create a way to display it
-- [] Create a way to take user input for the rule and have it translated to binary
-- [] Create a way to make the ruleset
-
-
-## DUMITRU:
-### 1D automaton
-- [x] Make a rand generator
-- [x] Let the user set itsown length for gens
-- [x] Let user set length for number of gens
-- [] ??? Allow the user to select or create the first gen 
-- [X] Make input validation
-- [] (MAYBE) Think about letting the user input a string of binary numbers
-### 2D automaton (Ren's notes)
-- [] Conys game
-- [] Different 2d automaton
-- [] Wrapping all sides
-
+# Celular Automaton Team 15
 ## COMPILING:
 ### To compile everythig
 make
@@ -41,12 +20,7 @@ make 2dcautomaton
 - Run wiht random rule and other values specified
     - `./cautomanonv2 rand 50 32`
 
-
-## Problems encountered:
-### 1D
-- Wanted to make a library file with all of the automaton function but kept running into memory management issues (pointers & seg faults)
-    - Decided to just stick to only one C file per solution 
-
-
+### 2D automatoma
+- It is not finished, didn't get the time to :(
 
  
