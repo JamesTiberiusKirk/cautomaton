@@ -45,7 +45,7 @@ make 2dcautomaton
 ## Problems encountered:
 ### 1D
 - Wanted to make a library file with all of the automaton function but kept running into memory management issues (pointers & seg faults)
-- 
+    - Decided to just stick to only one C file per solution 
 
 
 

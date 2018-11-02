@@ -23,7 +23,7 @@ int main(int argc, char *argv[]){
     
     srand(time(NULL));
     if (argc==1){ 
-        dec = (rand()%255)+1;
+        dec = (rand()%256)+1;
     } else if (argc==2) {
         if (strcmp(argv[1], "help") == 0 ){
             help();
